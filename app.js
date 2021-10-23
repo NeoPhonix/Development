@@ -22,7 +22,7 @@ myApp.config(function ($routeProvider) {
 });
 
 myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
-    
+    // '555 Main St., New York, NY 11111'
     $scope.person = {
         name: 'John Doe',
         address: '555 Main St., New York, NY 11111'
