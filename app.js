@@ -6,7 +6,8 @@ myApp.config(function ($routeProvider) {
     
     .when('/', {
         templateUrl: 'pages/main.html',
-        controller: 'mainController'
+        controller: 'mainController',
+        controllerAs: 'ctrl'
     })
     
     .when('/second', {
@@ -23,15 +24,30 @@ myApp.config(function ($routeProvider) {
 
 myApp.controller('mainController', ['$scope', '$log', function($scope, $log) {
     // '555 Main St., New York, NY 11111'
-    $scope.person = {
+    var ctrl = this;
+    ctrl.person = [{
         name: 'John Doe',
         address: '555 Main St',
         city: 'New York',
         state: 'NY',
         zipCode:11111
-    }
+    },
+    {
+        name: 'Jane Doe',
+        address: '555 Main St',
+        city: 'New York',
+        state: 'NY',
+        zipCode:11111
+    },
+    {
+        name: 'Martin Doe',
+        address: '555 Main St',
+        city: 'New York',
+        state: 'NY',
+        zipCode:11111
+    }];
     
-    $scope.formattedAddress = ((person) => person.address + "., " + person.city + ", " + person.state + " " + person.zipCode)
+    $scope.formatted = ((person) => person.address + "., " + person.city + ", " + person.state + " " + person.zipCode)
 }]);
 
 myApp.controller('secondController', ['$scope', '$log', '$routeParams', function($scope, $log, $routeParams) {
@@ -47,7 +63,7 @@ myApp.directive("searchResult", function() {
        replace: true,
        scope: {
            personObject: "=",
-           formattedAddressFunction: "&"
+           formatted: "&"
        }
    }
 });
